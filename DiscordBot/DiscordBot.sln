@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SurvivioData", "SurvivioData\SurvivioData.csproj", "{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyisBot", "AyisBot\AyisBot.csproj", "{740F4771-5109-4284-9FF0-B9D82E3506D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{740F4771-5109-4284-9FF0-B9D82E3506D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{740F4771-5109-4284-9FF0-B9D82E3506D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{740F4771-5109-4284-9FF0-B9D82E3506D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{740F4771-5109-4284-9FF0-B9D82E3506D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39F12EFF-E868-4ABC-AE2B-D69CA41D58BC}
+	EndGlobalSection
+EndGlobal
