@@ -47,10 +47,14 @@ namespace AyisBot
                 EmbedBuilder build = BuildHelp();
                 await msg.Channel.SendMessageAsync("", false, build);
             }
+            else if (msg.Content == "?r")
+            {
+                EmbedBuilder build = Left();
+                await msg.Channel.SendMessageAsync("", false, build);
+            }
         }
 
         #region commands
-
         private EmbedBuilder BuildJakob()
         {
             EmbedBuilder build = new EmbedBuilder();
@@ -113,6 +117,25 @@ namespace AyisBot
                .WithColor(Color.DarkMagenta);
 
             return Build;
+        }
+
+        private EmbedBuilder Left()
+        {
+            EmbedBuilder build = new EmbedBuilder();
+
+            DateTime turnInTime = new DateTime(2018, 6, 20, 8, 30, 0);
+            TimeSpan timeRemaining = turnInTime.Subtract(DateTime.Now);
+            string timeRemainingString = timeRemaining.Days + " days, " + timeRemaining.Hours + " hours, " + timeRemaining.Minutes + " minutes";
+            if (timeRemaining.Days == 0)
+            {
+                timeRemainingString = timeRemaining.Hours + " hours, " + timeRemaining.Minutes + " minutes";
+            }
+
+            build.WithTitle("We got da exam in")
+                .WithDescription(timeRemainingString)
+                .WithColor(Color.Purple);
+
+            return build;
         }
         #endregion
     }
