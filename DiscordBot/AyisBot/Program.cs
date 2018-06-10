@@ -61,31 +61,27 @@ namespace AyisBot
             Random random = new Random();
             string answer = "";
             int i = random.Next(1, 100);
-
+                  
             if (i <= 48)
             {
                 answer = "Ja";
-                build.WithTitle("Hvadsigerjakob.dk v2")
-                    .WithDescription("Jakob siger: " + answer)
-                    .WithThumbnailUrl("http://www.hvadsigerjakob.dk/jakob_yes.jpg")
-                    .WithColor(Color.DarkBlue);
+                build.WithThumbnailUrl("http://www.hvadsigerjakob.dk/jakob_yes.jpg");
             }
             else if (i > 96)
             {
                 answer = "Ved ikke";
-                build.WithTitle("Hvadsigerjakob.dk v2")
-                    .WithDescription("Jakob siger: " + answer)
-                    .WithThumbnailUrl("http://www.hvadsigerjakob.dk/jakob_does_not_know.jpg")
-                    .WithColor(Color.DarkBlue);
+                build.WithThumbnailUrl("http://www.hvadsigerjakob.dk/jakob_does_not_know.jpg");
             }
             else
             {
                 answer = "Nej";
-                build.WithTitle("Hvadsigerjakob.dk v2")
-                    .WithDescription("Jakob siger: " + answer)
-                    .WithThumbnailUrl("http://www.hvadsigerjakob.dk/jakob_no.jpg")
-                    .WithColor(Color.DarkBlue);
+                build.WithThumbnailUrl("http://www.hvadsigerjakob.dk/jakob_no.jpg");
             }
+
+            build.WithTitle("Hvadsigerjakob.dk v2")
+                    .WithDescription("Jakob siger: " + answer)
+                    .WithColor(Color.DarkBlue);
+
             return build;
         }
 
