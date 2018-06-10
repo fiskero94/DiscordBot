@@ -5,9 +5,7 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SurvivioData", "SurvivioData\SurvivioData.csproj", "{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyisBot", "AyisBot\AyisBot.csproj", "{740F4771-5109-4284-9FF0-B9D82E3506D3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiskeBot", "FiskeBot\FiskeBot.csproj", "{3AF1EB44-13D7-4E05-A954-D73162E7B71A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FiskeBot", "FiskeBot\FiskeBot.csproj", "{3AF1EB44-13D7-4E05-A954-D73162E7B71A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +17,6 @@ Global
 		{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CE9A99C-D8FB-45CE-A799-653EDDE29F57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{740F4771-5109-4284-9FF0-B9D82E3506D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{740F4771-5109-4284-9FF0-B9D82E3506D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{740F4771-5109-4284-9FF0-B9D82E3506D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{740F4771-5109-4284-9FF0-B9D82E3506D3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AF1EB44-13D7-4E05-A954-D73162E7B71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AF1EB44-13D7-4E05-A954-D73162E7B71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AF1EB44-13D7-4E05-A954-D73162E7B71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
