@@ -11,7 +11,7 @@ namespace FiskeBot
 {
     class Program
     {
-        public string Token => File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\") + @"\token.txt");
+        public string Token => File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "\token.txt");
 
         public static void Main(string[] args) => new Program().RunAsync().GetAwaiter().GetResult();
 
@@ -31,6 +31,7 @@ namespace FiskeBot
             _client.Log += Log;
             await RegisterCommandsAsync();
             await _client.LoginAsync(TokenType.Bot, Token);
+            await _client.SetGameAsync("Half-Life 3");
             await _client.StartAsync();
             await Task.Delay(-1);
         }
