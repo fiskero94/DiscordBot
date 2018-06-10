@@ -1,4 +1,5 @@
-﻿using Discord.Commands;
+﻿using Discord;
+using Discord.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,11 @@ namespace FiskeBot.Modules
         [Command("google")]
         public async Task GoogleAsync()
         {
-            await ReplyAsync("Hello World!");
+            EmbedBuilder builder = new EmbedBuilder();
+            builder.WithTitle("Google!")
+                   .WithDescription("Testing")
+                   .WithColor(Color.Blue);
+            await ReplyAsync("", false, builder.Build());
         }
     }
 }

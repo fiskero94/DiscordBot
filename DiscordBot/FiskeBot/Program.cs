@@ -3,6 +3,7 @@ using Discord.Commands;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -10,7 +11,9 @@ namespace FiskeBot
 {
     class Program
     {
-        static void Main(string[] args) => new Program().RunAsync().GetAwaiter().GetResult();
+        public string Token => File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\") + @"\token.txt");
+
+        public static void Main(string[] args) => new Program().RunAsync().GetAwaiter().GetResult();
 
         private DiscordSocketClient _client;
         private CommandService _commands;
@@ -27,8 +30,7 @@ namespace FiskeBot
 
             _client.Log += Log;
             await RegisterCommandsAsync();
-            string token = "NDU1MTc3ODI0MDEwMjQwMDAw.Df4QLQ.UaVjC7m7zRJtjJQvXru0fG-tF9k";
-            await _client.LoginAsync(TokenType.Bot, token);
+            await _client.LoginAsync(TokenType.Bot, Token);
             await _client.StartAsync();
             await Task.Delay(-1);
         }
