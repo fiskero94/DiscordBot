@@ -12,6 +12,7 @@ namespace FiskeBot
     {
         private static readonly string configPath = AppDomain.CurrentDomain.BaseDirectory + "/config.json";
 
+        public static char Char(string str) => str.ToCharArray()[0];
         public static string CommandPrefix { get; private set; }
         public static string Token { get; private set; }
 
@@ -20,18 +21,22 @@ namespace FiskeBot
             if (!File.Exists(configPath))
             {
                 CreateConfig();
-                ReadConfig();
+                Console.WriteLine("Config created, please insert token and restart the bot.");
+                Console.ReadKey();
+                Environment.Exit(1);
             }
-            else ReadConfig();
+            ReadConfig();
         }
 
         private static void CreateConfig()
         {
             ConfigFile config = new ConfigFile();
-            foreach (PropertyInfo property in config.GetType().GetProperties())
+            foreach (FieldInfo field in config.GetType().GetFields())
             {
-                object defaultValue = ((DefaultValueAttribute)property.GetCustomAttribute(typeof(DefaultValueAttribute))).Value;
-                property.SetValue(config, Convert.ChangeType(defaultValue, property.PropertyType));
+                object defaultValue = ((DefaultValueAttribute)field.GetCustomAttribute(typeof(DefaultValueAttribute))).Value;
+                object configBoxed = config;
+                field.SetValue(configBoxed, defaultValue);
+                config = (ConfigFile)configBoxed;
             }
             string json = JsonConvert.SerializeObject(config, Formatting.Indented);
             File.WriteAllText(configPath, json);
@@ -41,20 +46,20 @@ namespace FiskeBot
         {
             string json = File.ReadAllText(configPath);
             ConfigFile config = JsonConvert.DeserializeObject<ConfigFile>(json);
-            foreach (PropertyInfo property in config.GetType().GetProperties())
+            foreach (FieldInfo field in config.GetType().GetFields())
             {
-                PropertyInfo publicProperty = typeof(Config).GetProperty(property.Name);
-                publicProperty.SetValue(null, Convert.ChangeType(property.GetValue(property), property.PropertyType));
+                PropertyInfo property = typeof(Config).GetProperty(field.Name);
+                property.SetValue(null, field.GetValue(config));
             }
         }
 
         private struct ConfigFile
         {
             [DefaultValue("!")]
-            public string CommandPrefix { get; set; }
+            public string CommandPrefix;
 
-            [DefaultValue(null)]
-            public string Token { get; set; }
+            [DefaultValue("None")]
+            public string Token;
         }
     }
 }

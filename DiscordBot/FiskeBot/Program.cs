@@ -30,7 +30,7 @@ namespace FiskeBot
 
             _client.Log += Log;
             await RegisterCommandsAsync();
-            await _client.LoginAsync(TokenType.Bot, Token);
+            await _client.LoginAsync(TokenType.Bot, Config.Token);
             await _client.StartAsync();
             await Task.Delay(-1);
         }
@@ -46,7 +46,8 @@ namespace FiskeBot
             SocketUserMessage message = msg as SocketUserMessage;
             if (message is null || message.Author.IsBot) return;
             int argPos = 0;
-            if (message.HasCharPrefix('!', ref argPos) || message.HasMentionPrefix(_client.CurrentUser, ref argPos))
+            if (message.HasCharPrefix(Config.Char(Config.CommandPrefix), ref argPos) || 
+                message.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 SocketCommandContext context = new SocketCommandContext(_client, message);
                 IResult result = await _commands.ExecuteAsync(context, argPos, _services);
