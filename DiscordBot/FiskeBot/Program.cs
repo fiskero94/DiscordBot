@@ -46,7 +46,7 @@ namespace FiskeBot
             SocketUserMessage message = msg as SocketUserMessage;
             if (message is null || message.Author.IsBot) return;
             int argPos = 0;
-            if (message.HasCharPrefix(Config.Char(Config.CommandPrefix), ref argPos) || 
+            if (message.HasCharPrefix(Config.CommandPrefix.Char(), ref argPos) || 
                 message.HasMentionPrefix(_client.CurrentUser, ref argPos))
             {
                 SocketCommandContext context = new SocketCommandContext(_client, message);
