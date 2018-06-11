@@ -5,21 +5,22 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace FiskeBot
 {
     public static class Config
     {
-        private static readonly string configPath = AppDomain.CurrentDomain.BaseDirectory + "/config.json";
+        private static readonly string path = AppDomain.CurrentDomain.BaseDirectory + "/config.json";
         public static char Char(this string str) => str.ToCharArray()[0];
         
         public static string CommandPrefix { get; private set; }
         public static string Token { get; private set; }
+        public static string GoogleApiKey { get; private set; }
+        public static string SearchEngineID { get; private set; }
 
         static Config()
         {
-            if (!File.Exists(configPath))
+            if (!File.Exists(path))
             {
                 CreateConfig();
                 Console.WriteLine("Config created, please insert token and restart the bot.");
@@ -38,12 +39,12 @@ namespace FiskeBot
                 property.SetValue(config, defaultValue);
             }
             string json = JsonConvert.SerializeObject(config, Formatting.Indented);
-            File.WriteAllText(configPath, json);
+            File.WriteAllText(path, json);
         }
 
         private static void ReadConfig()
         {
-            string json = File.ReadAllText(configPath);
+            string json = File.ReadAllText(path);
             ConfigFile config = JsonConvert.DeserializeObject<ConfigFile>(json);
             ValidateConfig(config);
             foreach (PropertyInfo property in config.GetType().GetProperties())
@@ -77,6 +78,14 @@ namespace FiskeBot
             [StringLength(59, MinimumLength = 59)]
             [DefaultValue("None")]
             public string Token { get; set; }
+            
+            [StringLength(39, MinimumLength = 39)]
+            [DefaultValue(null)]
+            public string GoogleApiKey { get; set; }
+
+            [StringLength(33, MinimumLength = 33)]
+            [DefaultValue(null)]
+            public string SearchEngineID { get; set; }
         }
     }
 }
