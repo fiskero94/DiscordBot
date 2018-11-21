@@ -15,13 +15,13 @@ namespace AyisBot
         public static void Main(string[] args) => new Program().MainAsync().GetAwaiter().GetResult();
 
         public async Task MainAsync()
-        {
+        {         
             DiscordSocketClient _client = new DiscordSocketClient();
             _client.Log += Log;
 
             await _client.LoginAsync(TokenType.Bot, Token);
             await _client.StartAsync();
-            await _client.SetGameAsync("Surviv.io");
+            await _client.SetGameAsync("We make project yis");
 
             _client.MessageReceived += MessageReceived;
 
@@ -36,13 +36,12 @@ namespace AyisBot
 
         private async Task MessageReceived(SocketMessage msg)
         {
-
             if (msg.Content.Contains("?jakob"))
             {
                 EmbedBuilder build = BuildJakob();
                 await msg.Channel.SendMessageAsync("", false, build);
             }
-            else if (msg.Content == "?help")
+            else if (msg.Content == "?helpooo")
             {
                 EmbedBuilder build = BuildHelp();
                 await msg.Channel.SendMessageAsync("", false, build);
@@ -52,6 +51,28 @@ namespace AyisBot
                 EmbedBuilder build = Left();
                 await msg.Channel.SendMessageAsync("", false, build);
             }
+            else if (msg.Content.Contains("?v"))
+            {
+                EmbedBuilder build = Random();
+                await msg.Channel.SendMessageAsync("", false, build);
+            }
+            else if (msg.Content.Contains("🚬rr"))
+            {              
+                EmbedBuilder build = Smoking();
+                await msg.Channel.SendMessageAsync("", false, build);
+            }
+        }
+
+        private EmbedBuilder Smoking()
+        {
+            EmbedBuilder build = new EmbedBuilder();
+       
+
+            build.WithTitle("Break")
+                .WithDescription(". smoke breaks today omegalul 🚬")
+                .WithColor(Color.DarkBlue);
+
+            return build;
         }
 
         #region commands
@@ -81,6 +102,26 @@ namespace AyisBot
             build.WithTitle("Hvadsigerjakob.dk v2")
                     .WithDescription("Jakob siger: " + answer)
                     .WithColor(Color.DarkBlue);
+
+            return build;
+        }
+
+        private EmbedBuilder Random()
+        {
+            EmbedBuilder build = new EmbedBuilder();
+            Random random = new Random();
+            string person = "";
+            int i = random.Next(1, 5);
+            switch (i)
+            {
+                case 1: person = "Leiki"; break;
+                case 2: person = "Johannes"; break;
+                case 3: person = "Mathias"; break;
+                case 4: person = "Lasse"; break;
+            }
+            build.WithTitle("A volunteer has appeared!")
+                .WithDescription("You turn, " + person)
+                .WithColor(Color.DarkMagenta);
 
             return build;
         }
